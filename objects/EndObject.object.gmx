@@ -30,6 +30,7 @@ inst = instance_place(x, y, Note);
 if (inst != noone) {
     with (inst) {
         instance_destroy();
+        global.combo = 0;
     }
 }
 </string>

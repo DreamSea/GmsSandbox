@@ -3,6 +3,44 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="4" name="datafiles">
+    <datafiles number="4" name="songfiles">
+      <datafile>
+        <name>Linjin - Walking in the NIGHT (OnosakiHito) [Futsuu].osu</name>
+        <exists>-1</exists>
+        <size>6579</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Linjin - Walking in the NIGHT (OnosakiHito) [Futsuu].osu</filename>
+      </datafile>
+      <datafile>
+        <name>WitN.ogg</name>
+        <exists>-1</exists>
+        <size>828317</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>WitN.ogg</filename>
+      </datafile>
+    </datafiles>
+  </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
@@ -10,15 +48,27 @@
     <sprite>sprites\Gray</sprite>
     <sprite>sprites\Target</sprite>
     <sprite>sprites\NoteSprite</sprite>
+    <sprite>sprites\spr_penguin</sprite>
+    <sprite>sprites\spr_beatbot</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\split_string.gml</script>
+    <script>scripts\target_key_press_event.gml</script>
+    <script>scripts\draw_score.gml</script>
+    <script>scripts\target_key_release_event.gml</script>
+    <script>scripts\player_movement.gml</script>
+    <script>scripts\song_proximity_preview.gml</script>
+    <script>scripts\pick_song.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\GoObject</object>
     <object>objects\Belt</object>
     <object>objects\TargetObject</object>
     <object>objects\Note</object>
     <object>objects\EndObject</object>
+    <object>objects\obj_player</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\SongSelect</room>

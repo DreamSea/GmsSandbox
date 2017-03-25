@@ -1,2 +1,4 @@
 Configs/
 sound/audio/
+datafiles/songfiles/*.ogg
+datafiles/songfiles/*.osu

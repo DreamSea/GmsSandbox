@@ -11,6 +11,45 @@
     <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>show_debug_message("hi");
+global.songfilepath = "songfiles/WitN.ogg";
+global.stepfilepath = "songfiles/Linjin - Walking in the NIGHT (OnosakiHito) [Futsuu].osu"
+var songfile = audio_create_stream(global.songfilepath);
+global.songIndex = audio_play_sound(songfile,0,true);
+show_debug_message(global.songIndex);
+show_debug_message(audio_is_playing(global.songIndex));
+
+var stepfile = file_text_open_read(global.stepfilepath);
+while (string_pos("[HitObjects]", file_text_readln(stepfile)) == 0) {
+    continue;
+}
+
+global.noteQueue = ds_queue_create();
+
+while (!file_text_eof(stepfile)) {
+    var array = split_string(file_text_readln(stepfile), ",");
+    ds_queue_enqueue(global.noteQueue, real(array[2]));
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
         <id>611</id>
         <kind>6</kind>
         <userelative>-1</userelative>
@@ -19,13 +58,13 @@
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>other</whoName>
+        <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>timer</string>
+            <string>sync</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -51,11 +90,57 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (timer % 100 == 0) {
-    instance_create(640+32, 64+128, Note);
+            <string>global.trackPosition = audio_sound_get_track_position(global.songIndex)*1000;
+
+var lead_time = 4;
+
+if (!ds_queue_empty(global.noteQueue) &amp;&amp; ds_queue_head(global.noteQueue) - (lead_time * 1000) &lt;= global.trackPosition) {
+    var target_hspeed = 1;
+    var pixel_lead = target_hspeed * room_speed * lead_time;
+
+    var target = ds_queue_dequeue(global.noteQueue);
+    var inst = instance_create(224+pixel_lead, 64+128, Note);
+    
+    with (inst) {
+    
+        //show_debug_message("creating: "+string(target));
+        noteTarget = target;
+        
+        // total pixels to move = 448
+        // lead time = 1 second
+        // hspeed = pixels / step
+        // roomspeed = steps / second
+        // hspeed = pixels / (roomspeed * seconds)
+        
+        hspeed = -1;
+        
+        // hspeed = 1; pixels = hspeed * rooms_speed * lead_time
+        
+        // pixels left to move = hspeed * room_speed * remaining_time
+        var remaining_time = (noteTarget - global.trackPosition) / 1000;
+        x = 224 + (-hspeed * room_speed * remaining_time);
+    }
 }
 
-timer++;
+if (sync &gt; room_speed/2) {
+    sync = 0;
+    var i;
+    for (i = 0; i &lt; instance_number(Note); i++) {
+        with (instance_find(Note, i)) {
+            var remaining_time = (noteTarget - global.trackPosition) / 1000;
+            x = 224 + (-hspeed * room_speed * remaining_time);
+        }
+    } 
+}
+
+sync++;
+
+/*if (timer % 100 == 0) {
+    //instance_create(640+32, 64+128, Note);
+    show_debug_message("hi: "+string(audio_sound_get_track_position(global.songIndex)*1000))
+}*/
+
+//timer++;
 
 </string>
           </argument>
