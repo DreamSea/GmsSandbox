@@ -52,8 +52,8 @@
   </views>
   <instances>
     <instance objName="Belt" x="160" y="192" name="inst_7CC45AB7" locked="0" code="" scaleX="17" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="TargetObject" x="224" y="160" name="inst_2B662537" locked="0" code="" scaleX="1" scaleY="4" colour="1694498815" rotation="0"/>
-    <instance objName="EndObject" x="128" y="192" name="inst_71888F6D" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="TargetObject" x="224" y="224" name="inst_2B662537" locked="0" code="" scaleX="1" scaleY="1" colour="1694498815" rotation="0"/>
+    <instance objName="EndObject" x="128" y="192" name="inst_D078F3D2" locked="0" code="" scaleX="1" scaleY="2" colour="4294901760" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

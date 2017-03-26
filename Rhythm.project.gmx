@@ -50,6 +50,10 @@
     <sprite>sprites\NoteSprite</sprite>
     <sprite>sprites\spr_penguin</sprite>
     <sprite>sprites\spr_beatbot</sprite>
+    <sprite>sprites\spr_choose_groove</sprite>
+    <sprite>sprites\spr_one_groove</sprite>
+    <sprite>sprites\White</sprite>
+    <sprite>sprites\spr_nut</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -61,6 +65,7 @@
     <script>scripts\player_movement.gml</script>
     <script>scripts\song_proximity_preview.gml</script>
     <script>scripts\pick_song.gml</script>
+    <script>scripts\song_proximity_gui.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\GoObject</object>
@@ -69,6 +74,13 @@
     <object>objects\Note</object>
     <object>objects\EndObject</object>
     <object>objects\obj_player</object>
+    <objects name="SongSelectTiles">
+      <object>objects\obj_choose_groove</object>
+      <object>objects\obj_one_groove</object>
+    </objects>
+    <objects name="style">
+      <object>objects\taiko_note</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\SongSelect</room>
